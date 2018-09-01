@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Confirmar Quarto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content">
+
+
+  <agm-map
+  [latitude]="markers[0].lat"
+  [longitude]="markers[0].lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  [zoomControl]="false">
+    <agm-marker
+      *ngFor="let m of markers; let i = index"
+      (markerClick)="clickedMarker(m.label, i)"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      (dragEnd)="markerDragEnd(m, $event)">
+
+      <agm-info-window>
+        <strong>{{m.label}}</strong>
+        <p>{{m.phone}}<br>{{m.street}}</p>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+
+
+  <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+    <h3 style="color: #272727; margin-bottom: 5px;">Sua anfitriã será a Thais</h3>
+    <section>
+      <div style="flex: 1;">
+        <bar-rating [(rate)]="room.stars" [readOnly]="true"></bar-rating>
+      </div>
+      <div style="flex: 1; padding-top: 10px;">
+        <span *ngIf="room.reviewsCount">({{room.reviewsCount}} avaliações)</span>
+      </div>
+    </section>
+  </div>
+
+  <ion-card>
+
+    <ion-img [src]="room.picture" [width]="'100%'" height="180"></ion-img>
+
+    <ion-card-content>
+    <ion-card-title>{{room.title}}</ion-card-title>
+
+    <p>{{room.description}}</p>
+    <p style="margin-top: 10px;">Distância: {{room.distance}} (á pé)</p>
+
+    <ion-badge color="primary" *ngFor="let i of room.additionals" style="margin-right: 10px; margin-top: 10px;">{{i}}</ion-badge>
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+
+    <div padding>
+      <button ion-button block color="primary" (click)="confirm()">Confirmar</button>
+    </div>
+
+
+
+</ion-content>

@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Alugar um Quarto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content">
+
+
+  <agm-map
+  [latitude]="markers[0].lat"
+  [longitude]="markers[0].lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  [zoomControl]="false">
+    <agm-marker
+      *ngFor="let m of markers; let i = index"
+      (markerClick)="clickedMarker(m.label, i)"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      (dragEnd)="markerDragEnd(m, $event)">
+
+      <agm-info-window>
+        <strong>{{m.label}}</strong>
+        <p>{{m.phone}}<br>{{m.street}}</p>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+
+
+  <ion-list>
+    <ion-list-header>
+      Preciso descançar: {{getTimeDiff()}}
+    </ion-list-header>
+
+    <ion-range min="30" max="360" step="30" snaps="true" [(ngModel)]="form.time" color="primary">
+      <ion-icon range-left small color="primary" name="timer"></ion-icon>
+      <ion-icon range-right color="primary" name="timer"></ion-icon>
+    </ion-range>
+
+
+    <ion-list-header>
+      Preferência
+    </ion-list-header>
+      <ion-item>
+        <ion-label>Anfitrião</ion-label>
+        <ion-select [(ngModel)]="form.gender">
+          <ion-option value="m">Mulher</ion-option>
+          <ion-option value="h">Homem</ion-option>
+          <ion-option value="n/a">Qualquer</ion-option>
+        </ion-select>
+      </ion-item>
+    <br>
+    <ion-list-header>
+      Requisitos
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Ar Condicionado</ion-label>
+      <ion-toggle checked="false"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lugar Silencioso</ion-label>
+      <ion-toggle checked="false"></ion-toggle>
+    </ion-item>
+    <br>
+    <ion-list-header>
+      Extra
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Banho (+R$ 5,00)</ion-label>
+      <ion-toggle checked="false"></ion-toggle>
+    </ion-item>
+
+    <!--<ion-item>-->
+      <!--<ion-range [(ngModel)]="time" [min]="30" [step]="30">-->
+        <!--<ion-icon slot="start" size="small" name="sunny"></ion-icon>-->
+        <!--<ion-label slot="end">{{time}}</ion-label>-->
+      <!--</ion-range>-->
+    <!--</ion-item>-->
+
+    <div padding>
+      <button ion-button block color="primary" (click)="solicitate()">Solicitar</button>
+    </div>
+
+  </ion-list>
+
+
+</ion-content>

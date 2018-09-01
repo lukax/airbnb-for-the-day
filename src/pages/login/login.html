@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>NappTime - Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-row class="top-row">
+    <ion-col>
+      <h1 class="label-logo"></h1>
+      <p class="label-description"></p>
+    </ion-col>
+  </ion-row>
+  <ion-row class="bottom-row">
+    <ion-col class="login-button" style="max-width: 200px; margin: 0 auto;">
+      <button ion-button block (click)="doLogin()">Entrar com Facebook</button>
+    </ion-col>
+  </ion-row>
+
+
+  <h1>{{user.name}}</h1>
+  <img [src]="user.picture">
+
+
+
+</ion-content>

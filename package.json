@@ -1,0 +1,54 @@
+{
+  "name": "napptime",
+  "version": "0.0.1",
+  "author": "Ionic Framework",
+  "homepage": "http://ionicframework.com/",
+  "private": true,
+  "scripts": {
+    "start": "ionic-app-scripts serve",
+    "clean": "ionic-app-scripts clean",
+    "build": "ionic-app-scripts build",
+    "lint": "ionic-app-scripts lint"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "@agm/core": "^1.0.0-beta.3",
+    "@angular/animations": "5.2.11",
+    "@angular/common": "5.2.11",
+    "@angular/compiler": "5.2.11",
+    "@angular/compiler-cli": "5.2.11",
+    "@angular/core": "5.2.11",
+    "@angular/forms": "5.2.11",
+    "@angular/http": "5.2.11",
+    "@angular/platform-browser": "5.2.11",
+    "@angular/platform-browser-dynamic": "5.2.11",
+    "@ionic-native/core": "~4.12.0",
+    "@ionic-native/facebook": "^3.8.0",
+    "@ionic-native/native-storage": "^3.8.0",
+    "@ionic-native/splash-screen": "~4.12.0",
+    "@ionic-native/status-bar": "~4.12.0",
+    "@ionic/storage": "2.1.3",
+    "bootstrap": "^4.1.3",
+    "cordova-plugin-facebook4": "^2.3.0",
+    "ionic-angular": "3.9.2",
+    "ionicons": "3.0.0",
+    "ngx-bar-rating": "^1.1.0",
+    "ngx-facebook": "^2.4.0",
+    "rxjs": "5.5.11",
+    "sw-toolbox": "3.6.0",
+    "zone.js": "0.8.26"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "3.2.0",
+    "typescript": "~2.6.2"
+  },
+  "description": "An Ionic project",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-facebook4": {
+        "APP_ID": "713147829017775",
+        "APP_NAME": "NappTime"
+      }
+    }
+  }
+}
