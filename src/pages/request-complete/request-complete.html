@@ -1,37 +1,62 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Confirmar Quarto</ion-title>
+  <ion-navbar [hideBackButton]="isConfirmed">
+    <!--<button ion-button menuToggle *ngIf="!isConfirmed">-->
+      <!--<ion-icon name="menu"></ion-icon>-->
+    <!--</button>-->
+    <ion-title *ngIf="!isConfirmed">Confirmar Quarto</ion-title>
+    <ion-title *ngIf="isConfirmed">Quarto Confirmado</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="outer-content">
+<ion-content class="outer-content" #pageTop>
 
 
-  <agm-map
-  [latitude]="markers[0].lat"
-  [longitude]="markers[0].lng"
-  [zoom]="zoom"
-  [disableDefaultUI]="false"
-  [zoomControl]="false">
-    <agm-marker
-      *ngFor="let m of markers; let i = index"
-      (markerClick)="clickedMarker(m.label, i)"
-      [latitude]="m.lat"
-      [longitude]="m.lng"
-      (dragEnd)="markerDragEnd(m, $event)">
+  <agm-map [ngClass]="{'map-big': isConfirmed, 'map-small': !isConfirmed}" [styles]="styles" [scrollwheel]="false"
+    [latitude]="loc.lat"
+    [longitude]="loc.lng"
+    [zoom]="zoom"
+    [disableDefaultUI]="true"
+    [zoomControl]="true">
+
+    <agm-polyline *ngFor="let s of leg.steps" [strokeOpacity]="0.5" [strokeColor]="'#3cbbb2'">
+      <agm-polyline-point [latitude]="s.start_location.lat" [longitude]="s.start_location.lng"></agm-polyline-point>
+      <div  *ngFor="let ss of s.steps">
+        <agm-polyline-point [latitude]="ss.start_location.lat" [longitude]="ss.start_location.lng"></agm-polyline-point>
+        <agm-polyline-point [latitude]="ss.end_location.lat" [longitude]="ss.end_location.lng"></agm-polyline-point>
+      </div>
+    </agm-polyline>
+
+    <agm-marker  *ngFor="let marker of markers; let i = index"
+       [iconUrl]="'assets/pin_small.png'"
+      [latitude]="marker.lat"
+      [longitude]="marker.lng">
 
       <agm-info-window>
-        <strong>{{m.label}}</strong>
-        <p>{{m.phone}}<br>{{m.street}}</p>
+        <strong>{{marker.label}}</strong>
+        <p>{{marker.street}}</p>
       </agm-info-window>
     </agm-marker>
   </agm-map>
 
 
-  <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+  <ion-card style="margin-top: 20px;">
+
+    <ion-img [src]="room.picture" [width]="'100%'" height="180"></ion-img>
+
+    <ion-card-content>
+    <ion-card-title>{{room.title}}</ion-card-title>
+
+    <p>{{room.description}}</p>
+    <p style="margin-top: 10px;">Distância: {{room.distance}} (á pé)</p>
+
+      <ion-badge color="primary" *ngFor="let i of room.additionals" style="margin-right: 10px; margin-top: 10px;">{{i}}</ion-badge>
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+  <div style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
     <h3 style="color: #272727; margin-bottom: 5px;">Sua anfitriã será a Thais</h3>
     <section>
       <div style="flex: 1;">
@@ -43,26 +68,10 @@
     </section>
   </div>
 
-  <ion-card>
-
-    <ion-img [src]="room.picture" [width]="'100%'" height="180"></ion-img>
-
-    <ion-card-content>
-    <ion-card-title>{{room.title}}</ion-card-title>
-
-    <p>{{room.description}}</p>
-    <p style="margin-top: 10px;">Distância: {{room.distance}} (á pé)</p>
-
-    <ion-badge color="primary" *ngFor="let i of room.additionals" style="margin-right: 10px; margin-top: 10px;">{{i}}</ion-badge>
-
-    </ion-card-content>
-
-  </ion-card>
-
-
 
     <div padding>
-      <button ion-button block color="primary" (click)="confirm()">Confirmar</button>
+      <button ion-button block color="primary" (click)="confirm()" *ngIf="!isConfirmed">Confirmar Quarto</button>
+      <button ion-button block color="primary" *ngIf="isConfirmed" (click)="doCheckIn()">Fazer Check-In</button>
     </div>
 
 

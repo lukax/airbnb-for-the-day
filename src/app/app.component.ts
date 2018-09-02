@@ -6,6 +6,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { RequestPage } from '../pages/request/request';
 import {LoginPage} from "../pages/login/login";
 import {RequestCompletePage} from "../pages/request-complete/request-complete";
+import {EvaluateHostPage} from "../pages/evaluate-host/evaluate-host";
+import {GuestCheckinPage} from "../pages/guest-checkin/guest-checkin";
+import {TutorialPage} from "../pages/tutorial/tutorial";
 
 @Component({
   templateUrl: 'app.html'
@@ -13,7 +16,8 @@ import {RequestCompletePage} from "../pages/request-complete/request-complete";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = RequestPage;
+  rootPage: any = LoginPage;
+
 
   pages: Array<{title: string, component: any}>;
 
@@ -22,8 +26,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: RequestPage },
-      { title: 'Login', component: LoginPage },
+      // { title: 'Alugar um Quarto', component: RequestPage },
+      { title: 'Entre ou cadastre-se', component: LoginPage },
+      { title: 'Como funciona?', component: TutorialPage },
     ];
 
   }
@@ -34,6 +39,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.nav.setRoot(this.rootPage);
     });
   }
 

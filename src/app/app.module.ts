@@ -15,6 +15,12 @@ import {Facebook} from "@ionic-native/facebook";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {FacebookModule} from "ngx-facebook";
 import {RequestCompletePage} from "../pages/request-complete/request-complete";
+import {EvaluateHostPage} from "../pages/evaluate-host/evaluate-host";
+import {EvaluateGuestPage} from "../pages/evaluate-guest/evaluate-guest";
+import {GuestCheckinPage} from "../pages/guest-checkin/guest-checkin";
+import {TutorialPage} from "../pages/tutorial/tutorial";
+import {HttpModule} from "@angular/http";
+import {BrMaskerModule} from "brmasker-ionic-3";
 
 @NgModule({
   declarations: [
@@ -24,7 +30,10 @@ import {RequestCompletePage} from "../pages/request-complete/request-complete";
 
     ListPage,
     LoginPage,
-
+    EvaluateHostPage,
+    EvaluateGuestPage,
+    GuestCheckinPage,
+    TutorialPage,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +49,9 @@ import {RequestCompletePage} from "../pages/request-complete/request-complete";
     BarRatingModule,
     FacebookModule.forRoot(),
 
+    HttpModule,
+
+    BrMaskerModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,6 +60,10 @@ import {RequestCompletePage} from "../pages/request-complete/request-complete";
     RequestCompletePage,
     ListPage,
     LoginPage,
+    EvaluateHostPage,
+    EvaluateGuestPage,
+    GuestCheckinPage,
+    TutorialPage,
   ],
   providers: [
     StatusBar,
@@ -56,6 +72,7 @@ import {RequestCompletePage} from "../pages/request-complete/request-complete";
 
     Facebook,
     NativeStorage,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar [hideBackButton]="true">
+    <!--<button ion-button menuToggle>-->
+      <!--<ion-icon name="menu"></ion-icon>-->
+    <!--</button>-->
+    <ion-title>NappTime</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content">
+
+
+  <div style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
+    <h1 style="color: #272727; margin-bottom: 5px;">Check-In</h1>
+    <p>
+     Posicione sua câmera em
+      <br>
+      frente ao QR Code para iniciar
+      <br>
+      o serviço
+      <br>
+    </p>
+    <br>
+    <img src="assets/qr-code.png">
+    <br>
+    <p>
+      Aproveite seu descanço
+      <br>
+      de 30 minutos.
+      <br>
+      O despertador avisará ao final
+      <br>
+      do período.
+      <br>
+    </p>
+  </div>
+
+
+    <div padding>
+      <button ion-button block color="primary" (click)="readQrCode()">Ler QR-Code</button>
+    </div>
+
+
+
+</ion-content>

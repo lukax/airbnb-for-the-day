@@ -6,7 +6,7 @@ page-home {
   height: 250px;
 }
 .map-big {
-  height: 90%;
+  height: 80%;
 }
 
 bar-rating {
@@ -23,9 +23,4 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.toaster .toast-wrapper {
-  background-color: #3cbbb2;
-  transform: translateY(50px) !important;
 }

@@ -3,12 +3,15 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>NappTime - Login</ion-title>
+    <ion-title>Entre ou cadastre-se</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="bg">
 
+  <div class="logo">
+    <img src="assets/logo.png">
+  </div>
 
   <ion-row class="top-row">
     <ion-col>
@@ -17,15 +20,13 @@
     </ion-col>
   </ion-row>
   <ion-row class="bottom-row">
-    <ion-col class="login-button" style="max-width: 200px; margin: 0 auto;">
-      <button ion-button block (click)="doLogin()">Entrar com Facebook</button>
+    <ion-col class="login-button" style="max-width: 250px; margin: 0 auto;">
+      <button ion-button block (click)="doLogin()">&nbsp;<ion-icon name="logo-facebook"></ion-icon>&nbsp;&nbsp;Entrar com Facebook</button>
+      <br>
+      <!--<button ion-button block (click)="doLogin()">&nbsp;<ion-icon name="logo-google"></ion-icon>&nbsp;&nbsp;Entrar com Google</button>-->
+      <button ion-button block (click)="tutorial()" outline>&nbsp;Como funciona?</button>
     </ion-col>
   </ion-row>
-
-
-  <h1>{{user.name}}</h1>
-  <img [src]="user.picture">
-
 
 
 </ion-content>

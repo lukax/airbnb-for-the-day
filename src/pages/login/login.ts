@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {Facebook} from "@ionic-native/facebook";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {RequestPage} from "../request/request";
 import {FacebookService, InitParams, LoginResponse} from "ngx-facebook";
+import {TutorialPage} from "../tutorial/tutorial";
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
 
 
   FB_APP_ID: number = 713147829017775;
@@ -31,16 +32,23 @@ export class LoginPage {
     // this.fb.browserInit(this.FB_APP_ID, "v2.8");
   }
 
+  ngOnInit() {
+  }
+
+  tutorial() {
+    this.nav.push(TutorialPage);
+  }
+
   doLogin() {
 
     this.fb.login({
       scope: 'email'
-    })
-      .then((response: LoginResponse) => {
+    }).then((response: LoginResponse) => {
         console.log(response);
 
         let userId = response.authResponse.userID;
         let params = new Array<string>();
+
         this.fb.api("/me?fields=name,gender")
           .then((user) => {
             this.user = user;
@@ -57,11 +65,19 @@ export class LoginPage {
                 this.nav.push(RequestPage);
               },(error) => {
                 console.log(error);
-              })
+              });
+
+              this.gotoRequestRoom();
           })
       })
-      .catch((error: any) => console.error(error));
+      .catch((error: any) => {
+        console.error(error);
+        this.gotoRequestRoom();
+      });
+  }
 
+  gotoRequestRoom() {
+    this.nav.setRoot(RequestPage);
   }
 
   // doFbLogin(){

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Como funciona?</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content" #pageTop>
+
+  <ion-slides pager>
+
+    <ion-slide>
+      <img src="assets/parte1.png">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/parte2.png">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/parte3.png">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/parte4.png">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/parte5.png">
+    </ion-slide>
+
+    <ion-slide>
+
+      <img src="assets/parte6.png">
+
+      <ion-list>
+        <ion-item>
+          <ion-label stacked>E-mail</ion-label>
+          <ion-input type="email" [(ngModel)]="email" [clearOnEdit]="true" placeholder="Digite seu e-mail"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Celular</ion-label>
+          <ion-input type="text" [(ngModel)]="phone" placeholder="Digite seu celular" [brmasker]="{phone: true}" [clearOnEdit]="true"></ion-input>
+        </ion-item>
+        <div padding>
+          <button ion-button block (click)="send()">&nbsp;Enviar</button>
+        </div>
+
+      </ion-list>
+
+    </ion-slide>
+
+
+  </ion-slides>
+
+
+</ion-content>
