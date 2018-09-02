@@ -2,6 +2,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {LoadingController, NavController} from 'ionic-angular';
 import {RequestPage} from "../request/request";
 import { Content } from 'ionic-angular';
+import {LoginPage} from "../login/login";
 
 @Component({
   selector: 'page-evaluate-host-page',
@@ -18,7 +19,7 @@ export class EvaluateHostPage {
 
 
   close() {
-    this.navCtrl.popToRoot();
+    this.navCtrl.popToRoot().then(() => this.navCtrl.setRoot(LoginPage));
   }
 
 

@@ -38,7 +38,9 @@ import {BrMaskerModule} from "brmasker-ionic-3";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {
-      mode: 'ios'
+      mode: 'ios',
+      backButtonText: 'Voltar',
+
     }),
 
     AgmCoreModule.forRoot({

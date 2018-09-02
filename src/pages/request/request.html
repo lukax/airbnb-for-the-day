@@ -11,10 +11,18 @@
 
 
   <agm-map
-  [latitude]="loc.lat" [longitude]="loc.lng" [styles]="styles" [scrollwheel]="false" [clickableIcons]="false"
+  [latitude]="loc.lat" [longitude]="loc.lng"
   [zoom]="zoom"
-  [disableDefaultUI]="false"
-  [zoomControl]="false">
+  [styles]="styles"
+
+  [gestureHandling]="'none'"
+  [scrollwheel]="false"
+  [clickableIcons]="false"
+  [draggable]="false"
+  [disableDoubleClickZoom]="true"
+  [zoomControl]="false"
+  [disableDefaultUI]="true"
+  >
     <agm-marker [iconUrl]="'assets/pin_small.png'"
       *ngFor="let m of markers; let i = index"
       [latitude]="m.lat"
@@ -31,7 +39,7 @@
 
   <ion-list>
     <ion-list-header>
-      Preciso descançar: {{getTimeDiff()}}
+      Preciso descansar: {{getTimeDiff()}}
     </ion-list-header>
 
     <ion-range min="20" max="240" step="20" snaps="true" [(ngModel)]="form.time" color="primary">
