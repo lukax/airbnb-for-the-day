@@ -37,7 +37,9 @@ import {BrMaskerModule} from "brmasker-ionic-3";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      mode: 'ios'
+    }),
 
     AgmCoreModule.forRoot({
       // please get your own API key here:

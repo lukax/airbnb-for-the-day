@@ -15,3 +15,25 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@media screen and (min-width: 1241px){
+  ion-app {
+    background-image: url('../assets/bricks.jpg');
+    background-size: cover;
+  }
+  ion-app .app-root{
+    border-radius: 3px;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    width: 900px;
+    max-height: 895px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 2%;
+    height: 95%;
+  }
+  ion-app.md {
+    background-color: #d9dbd6;
+  }
+}
