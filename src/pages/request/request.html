@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar>
-    <!--<button ion-button menuToggle>-->
-      <!--<ion-icon name="menu"></ion-icon>-->
-    <!--</button>-->
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Alugar um Quarto</ion-title>
   </ion-navbar>
 </ion-header>
@@ -23,11 +23,10 @@
   [zoomControl]="false"
   [disableDefaultUI]="true"
   >
-    <agm-marker [iconUrl]="'assets/pin_small.png'"
+    <agm-marker [iconUrl]="'assets/pin_small.png'" (markerClick)="markerClick()"
       *ngFor="let m of markers; let i = index"
       [latitude]="m.lat"
-      [longitude]="m.lng"
-      (dragEnd)="markerDragEnd(m, $event)">
+      [longitude]="m.lng">
 
       <agm-info-window>
         <strong>{{m.label}}</strong>

@@ -1,9 +1,8 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {LoadingController, NavController} from 'ionic-angular';
+import {LoadingController, MenuController, NavController} from 'ionic-angular';
 import {RequestPage} from "../request/request";
 import { Content } from 'ionic-angular';
 import {EvaluateHostPage} from "../evaluate-host/evaluate-host";
-import {EvaluateGuestPage} from "../evaluate-guest/evaluate-guest";
 
 @Component({
   selector: 'page-guest-checkin',
@@ -14,7 +13,9 @@ export class GuestCheckinPage {
   stars = 0;
 
   constructor(public navCtrl: NavController,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              public menuCtrl: MenuController) {
+    this.menuCtrl.enable(false);
   }
 
 
@@ -23,7 +24,7 @@ export class GuestCheckinPage {
   }
 
   readQrCode() {
-    this.navCtrl.push(EvaluateGuestPage);
+    this.navCtrl.push(EvaluateHostPage);
   }
 
 }

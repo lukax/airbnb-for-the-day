@@ -1,5 +1,5 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {LoadingController, NavController} from 'ionic-angular';
+import {LoadingController, MenuController, NavController} from 'ionic-angular';
 import {RequestCompletePage} from "../request-complete/request-complete";
 import moment from "moment";
 
@@ -52,7 +52,10 @@ export class RequestPage {
   zoom: number = 14;
 
   constructor(public navCtrl: NavController,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              public menuCtrl: MenuController) {
+
+    this.menuCtrl.enable(false);
   }
 
   getTimeDiff() {
@@ -70,6 +73,10 @@ export class RequestPage {
     const loading = this.loadingCtrl.create({duration: 500, content: 'Procurando...'});
     loading.present();
     loading.onDidDismiss(() => this.navCtrl.push(RequestCompletePage));
+  }
+
+  markerClick() {
+
   }
 
   getPrice() {

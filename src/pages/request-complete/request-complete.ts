@@ -1,5 +1,5 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {LoadingController, NavController, ToastController} from 'ionic-angular';
+import {LoadingController, MenuController, NavController, ToastController} from 'ionic-angular';
 import {RequestPage} from "../request/request";
 import { Content } from 'ionic-angular';
 import {EvaluateHostPage} from "../evaluate-host/evaluate-host";
@@ -53,7 +53,9 @@ export class RequestCompletePage {
 
   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController,
+              public menuCtrl: MenuController) {
+    this.menuCtrl.enable(false);
   }
 
 
